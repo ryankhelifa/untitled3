@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                             http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <display-name>Cinema Web Service</display-name>
+
+    <servlet>
+        <servlet-name>UserService</servlet-name>
+        <servlet-class>com.exemple.service.service.UserService</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UserService</servlet-name>
+        <url-pattern>/UserService</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TicketService</servlet-name>
+        <servlet-class>com.exemple.service.service.TicketService</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TicketService</servlet-name>
+        <url-pattern>/TicketService</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MovieService</servlet-name>
+        <servlet-class>com.exemple.service.service.MovieService</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>MovieService</servlet-name>
+        <url-pattern>/MovieService</url-pattern>
+    </servlet-mapping>
+
+</web-app>

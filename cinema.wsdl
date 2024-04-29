@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:tns="http://exemple.com/service"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  targetNamespace="http://exemple.com/service">
+
+    <!-- Types: Define data types used in the operations -->
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://exemple.com/service">
+            <xsd:complexType name="User">
+                <!-- Define User fields here -->
+            </xsd:complexType>
+            <xsd:complexType name="Ticket">
+                <!-- Define Ticket fields here -->
+            </xsd:complexType>
+            <xsd:complexType name="Movie">
+                <!-- Define Movie fields here -->
+            </xsd:complexType>
+            <xsd:complexType name="Diffusion">
+                <!-- Define Diffusion fields here -->
+            </xsd:complexType>
+            <!-- Define other types if necessary -->
+        </xsd:schema>
+    </wsdl:types>
+
+    <!-- Messages: Define input and output messages for each operation -->
+    <!-- UserService messages -->
+    <wsdl:message name="loginRequest">
+        <wsdl:part name="email" type="xsd:string" />
+        <wsdl:part name="password" type="xsd:string" />
+    </wsdl:message>
+    <wsdl:message name="loginResponse">
+        <wsdl:part name="user" type="tns:User" />
+    </wsdl:message>
+    <wsdl:message name="registerRequest">
+        <wsdl:part name="name" type="xsd:string" />
+        <wsdl:part name="familyName" type="xsd:string" />
+        <wsdl:part name="email" type="xsd:string" />
+        <wsdl:part name="password" type="xsd:string" />
+    </wsdl:message>
+    <wsdl:message name="registerResponse">
+        <wsdl:part name="result" type="xsd:boolean" />
+    </wsdl:message>
+
+    <!-- TicketService messages -->
+    <wsdl:message name="clienTicketsRequest">
+        <wsdl:part name="email" type="xsd:string" />
+        <wsdl:part name="password" type="xsd:string" />
+    </wsdl:message>
+    <wsdl:message name="clienTicketsResponse">
+        <wsdl:part name="tickets" type="tns:Ticket" />
+    </wsdl:message>
+    <wsdl:message name="buyTicketRequest">
+        <wsdl:part name="email" type="xsd:string" />
+        <wsdl:part name="password" type="xsd:string" />
+        <wsdl:part name="diffusionId" type="xsd:long" />
+    </wsdl:message>
+    <wsdl:message name="buyTicketResponse"/>
+
+    <!-- MovieService messages -->
+    <wsdl:message name="fetchMoviesRequest"/>
+    <wsdl:message name="fetchMoviesResponse">
+        <wsdl:part name="movies" type="tns:Movie" />
+    </wsdl:message>
+    <wsdl:message name="fetchMovieRequest">
+        <wsdl:part name="title" type="xsd:string" />
+    </wsdl:message>
+    <wsdl:message name="fetchMovieResponse">
+        <wsdl:part name="movie" type="tns:Movie" />
+    </wsdl:message>
+
+    <!-- PortType: Define operations -->
+    <!-- UserService operations -->
+    <wsdl:portType name="UserServicePortType">
+        <wsdl:operation name="login">
+            <wsdl:input message="tns:loginRequest" />
+            <wsdl:output message="tns:loginResponse" />
+        </wsdl:operation>
+        <wsdl:operation name="register">
+            <wsdl:input message="tns:registerRequest" />
+            <wsdl:output message="tns:registerResponse" />
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <!-- TicketService operations -->
+    <wsdl:portType name="TicketServicePortType">
+        <wsdl:operation name="clienTickets">
+            <wsdl:input message="tns:clienTicketsRequest" />
+            <wsdl:output message="tns:clienTicketsResponse" />
+        </wsdl:operation>
+        <wsdl:operation name="buyTicket">
+            <wsdl:input message="tns:buyTicketRequest" />
+            <wsdl:output message="tns:buyTicketResponse" />
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <!-- MovieService operations -->
+    <wsdl:portType name="MovieServicePortType">
+        <wsdl:operation name="fetchMovies">
+            <wsdl:input message="tns:fetchMoviesRequest" />
+            <wsdl:output message="tns:fetchMoviesResponse" />
+        </wsdl:operation>
+        <wsdl:operation name="fetchMovie">
+            <wsdl:input message="tns:fetchMovieRequest" />
+            <wsdl:output message="tns:fetchMovieResponse" />
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <!-- Binding: Define SOAP binding -->
+    <!-- UserService binding -->
+    <wsdl:binding name="UserServiceSOAPBinding" type="tns:UserServicePortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="login">
+            <soap:operation soapAction=""/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="register">
+            <soap:operation soapAction=""/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <!-- TicketService binding -->
+    <wsdl:binding name="TicketServiceSOAPBinding" type="tns:TicketServicePortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="clienTickets">
+            <soap:operation soapAction=""/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="buyTicket">
+            <soap:operation soapAction=""/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <!-- MovieService binding -->
+    <wsdl:binding name="MovieServiceSOAPBinding" type="tns:MovieServicePortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="fetchMovies">
+            <soap:operation soapAction=""/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="fetchMovie">
+            <soap:operation soapAction=""/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+<!-- Service: Define service -->
+    <!-- UserService service -->
+    <wsdl:service name="UserService">
+        <wsdl:port name="UserServicePort" binding="tns:UserServiceSOAPBinding">
+            <soap:address location="http://exemple.com/service/UserService"/>
+        </wsdl:port>
+    </wsdl:service>
+
+    <!-- TicketService service -->
+    <wsdl:service name="TicketService">
+        <wsdl:port name="TicketServicePort" binding="tns:TicketServiceSOAPBinding">
+            <soap:address location="http://exemple.com/service/TicketService"/>
+        </wsdl:port>
+    </wsdl:service>
+
+    <!-- MovieService service -->
+    <wsdl:service name="MovieService">
+        <wsdl:port name="MovieServicePort" binding="tns:MovieServiceSOAPBinding">
+            <soap:address location="http://exemple.com/service/MovieService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
