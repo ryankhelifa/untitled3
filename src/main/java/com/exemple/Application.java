@@ -24,7 +24,6 @@ public class Application {
             System.out.println("Connected to database.");
 
 
-
             DatabaseHandler databaseHandler = new DatabaseHandler(connection);
             UserService userService = new UserService(databaseHandler);
             MovieService movieService = new MovieService(databaseHandler);
